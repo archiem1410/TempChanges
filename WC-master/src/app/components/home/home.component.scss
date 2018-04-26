@@ -1,0 +1,210 @@
+@import "../../../sass/scss/variables";
+@import "../../../sass/scss/mixins";
+$font-color:#4240A0;
+$menu-color:#619AD5;
+$menu-active: #232323;
+$btn-color:#B500FF;
+.hdr-wrap {
+    height: 40px;
+    .logo {
+        font-size: 22px;
+        line-height: 30px;
+        padding: 10px 0;
+        color: #232323;
+        font-family: $font1;
+    }
+    .menu {
+        padding: 12px 0;
+        text-align: center;
+        a {
+            color: $font-color;
+            font-family: $font2;
+            font-size: 14px;
+            display: inline-block;
+            margin: 0 10px;
+            text-decoration: none;
+            &:hover,
+            &.active {
+                border-bottom: 3px solid #FED400;
+            }
+        }
+    }
+    .profile-wrap {
+        padding: 10px 15px;
+        color: $menu-color;
+        >div {
+            float: right;
+            >div {
+                float: left;
+            }
+        }
+        .pic {
+            line-height: 30px;
+            text-align: center;
+            width: 30px;
+            border-radius: 50%;
+            font-size: 30px;
+        }
+        .name {
+            padding: 5px;
+            font-size: 16px;
+        }
+        .settings {
+            color: #ccc;
+            font-size: 28px;
+            line-height: 40px;
+            padding-left: 30px;
+        }
+    }
+}
+
+.content-wrap {
+    .content-menu {
+        background: $white;
+        padding: 10px;
+        font-weight: bold;
+        span {
+            font-size: 12px;
+            color: $menu-color;
+            display: block;
+            padding-left: 8px;
+            margin-top: 10px;
+        }
+        ul {
+            font-size: 14px;
+            list-style: none;
+            padding: 0 10px;
+            color: #CCCCCC;
+            li {
+                padding: 5px 0;
+                &.active {
+                    color: $menu-active;
+                }
+            }
+        }
+    }
+}
+
+.content {
+    .inner {
+        background: $white;
+        margin-bottom: 10px;
+        padding: 10px;
+        .r-1 {
+            overflow: auto;
+            >div {
+                float: left;
+            }
+            .c-1 {
+                img {
+                    width: 48px;
+                }
+            }
+            .c-hdr {
+                width: 80%;
+                font-size: 22px;
+                padding: 0 15px;
+                text-align: center;
+                color: #59595A;
+            }
+            .c-btn {
+                width: 10%;
+                text-align: right;
+                button {
+                    background: none;
+                    border: 2px solid $btn-color;
+                    box-shadow: none;
+                    color: $btn-color;
+                    padding: 5px 15px;
+                }
+            }
+        }
+        .wish-outer {
+            padding-top: 10px;
+            margin-left: -5px;
+            margin-right: -5px;
+            >div {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+            .wish-block {
+                padding: 10px;
+                background: #EBF4C6;
+            }
+        }
+    }
+}
+
+.btn-gray {
+    @include button(#bfbfb9, #8e8e8b, #F8FAE8, 0);
+}
+
+.btn-purple {
+    @include button(#8400FE, #7E00FF, #FFFFFF, 4px);
+}
+
+.btn-green {
+    @include button(#008B44, #259158, #FFFFFF, 4px);
+}
+
+.btn-gray {
+    background: none;
+    border: 2px solid #bfbfb9;
+    box-shadow: none;
+    color: #8e8e8b;
+    padding: 5px 15px;
+    border-radius: 0;
+    font-family: $font1;
+    background-color: #F8FAE8;
+}
+
+.ratings {
+    padding: 0;
+    .inner {
+        padding: 10px;
+        background: $white;
+    }
+    .ratediv {
+        width: 60%;
+        margin: 0 auto;
+        position: relative;
+        .rate {
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            width: 100%;
+            line-height: 30px;
+            font-size: 30px;
+            margin-top: -15px;
+            color: $font-color;
+        }
+    }
+}
+
+.wish-wrap {
+    text-align: center;
+    margin-bottom: 20px;
+    img {
+        width: 100px;
+        cursor: pointer;
+    }
+}
+
+.wish-o {
+    margin-right: -5px;
+    margin-left: -5px;
+    .wish-img {
+        padding-right: 5px;
+        padding-left: 5px;
+        img {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+    }
+}
+
+.wish-btn-wrap {
+    text-align: right;
+}

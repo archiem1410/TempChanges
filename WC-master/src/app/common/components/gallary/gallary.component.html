@@ -1,0 +1,40 @@
+<!-- <div class="row wish-o">
+    <div class="col-sm-6 wish-img">
+        <img class="w100" src="assets/img/static/1.jpg" alt="">
+    </div>
+    <div class="col-sm-6 wish-img">
+        <img class="w100" src="assets/img/static/2.jpg" alt="">
+    </div>
+    <div class="col-sm-6 wish-img">
+        <img class="w100" src="assets/img/static/3.jpg" alt="">
+    </div>
+    <div class="col-sm-6 wish-img">
+        <img class="w100" src="assets/img/static/4.jpg" alt="">
+    </div>
+    <div class="col-sm-6 wish-img">
+        <img class="w100" src="assets/img/static/5.jpg" alt="">
+    </div>
+    <div class="col-sm-6 wish-img">
+        <img class="w100" src="assets/img/static/6.jpg" alt="">
+    </div>
+</div> -->
+<div class="row">
+    <div class="col-xs-9">
+        <img class="w100" src="assets/img/static/{{images[0].src}}" alt="">
+    </div>
+    <div class="col-xs-3 image-row">
+      <div>
+          <img class="w100" src="assets/img/static/{{images[1].src}}" alt="">
+      </div>
+      <div>
+          <img class="w100" src="assets/img/static/{{images[2].src}}" alt="">
+      </div>
+      <div>
+        <label>
+          <img class="w100" src="assets/img/static/{{images[3].src}}" alt="">
+          <div *ngIf="isShowOverlay" class="overlay"><span>+{{totalImagesLeft}}</span></div>
+        </label>
+      </div>
+    </div>
+</div>
+  

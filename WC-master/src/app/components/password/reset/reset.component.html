@@ -1,0 +1,23 @@
+<div class="register">
+    <h3 class="mt10">Reset Password</h3>
+    <div [hidden]="!errorMsg" class="alert alert-danger text-center">
+        {{errorMsg}}
+    </div>
+    <div [hidden]="!successMsg" class="alert alert-success text-center">
+        {{successMsg}}
+    </div>
+    <form class="mtrForm" [ngClass]="{'form-submit': resetForm.submitted}" name="resetForm" #resetForm="ngForm" (ngSubmit)="resetForm.valid && onSubmit(resetForm)" autocomplete="off">
+        <div class="group" [ngClass]="{'error': email.invalid}">
+            <input type="text" id="email" name="email" [(ngModel)]="register.Email" #email="ngModel" pattern={{vl.pattern.email}} required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Email Address</label>
+            <span class="msg">{{vl.msg.invalidname}}</span>
+        </div>
+        <div class="btn-wrap">
+            <button type="submit" class="btn btn-default">Reset</button>
+            <app-loader *ngIf="loading"></app-loader>
+            <a class="pull-right" routerLink="/" routerLinkActive="active">Register</a>
+        </div>
+    </form>
+</div>

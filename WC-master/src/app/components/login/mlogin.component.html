@@ -1,0 +1,47 @@
+<!-- <form class="navbar-form navbar-right loginForm" name="loginForm" #loginForm="ngForm" (ngSubmit)="loginForm.valid && onSubmit(loginForm)" autocomplete="off">
+    <div class="form-group">
+        <input type="text" class="form-control blk" placeholder="Username" id="uname" name="uname" [(ngModel)]="login.username" #uname="ngModel" required />
+        <span><br></span>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control blk" placeholder="Password" id="password" name="password" [(ngModel)]="login.password" #password="ngModel" required>
+        <a class="fglink" routerLink="password/reset">Forgot password?</a>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-default nav-customBtn blk">Login</button>
+        <span><br></span>
+    </div>
+</form> -->
+
+
+<div class="register">
+    <h3 class="mt10">Login</h3>
+    <!-- <div [hidden]="!errorMsg" class="alert alert-danger text-center">
+        {{errorMsg}}
+    </div>
+    <div [hidden]="!successMsg" class="alert alert-success text-center">
+        {{successMsg}}
+    </div> -->
+    <form class="mtrForm" [ngClass]="{'form-submit': loginForm.submitted}" name="loginForm" #loginForm="ngForm" (ngSubmit)="loginForm.valid && onSubmit(loginForm)" autocomplete="off">
+        <div class="group" [ngClass]="{'error': uname.invalid}">
+            <input type="text" id="uname" name="uname" [(ngModel)]="login.username" #uname="ngModel" required />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Username</label>
+            <span class="msg">{{vl.msg.invalidname}}</span>
+        </div>
+        <div class="group" [ngClass]="{'error': password.invalid}">
+            <input type="text" id="password" name="password" [(ngModel)]="login.password" #password="ngModel" required />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Password</label>
+            <span class="msg">{{vl.msg.invalidpassword}}</span>
+        </div>
+
+        <div class="btn-wrap">
+            <button type="submit" class="btn btn-default">Login</button>
+            <button routerLink="register" type="submit" class="btn btn-default">Register</button>
+            <app-loader *ngIf="loading"></app-loader>
+        </div>
+    </form>
+</div>

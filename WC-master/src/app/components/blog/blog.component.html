@@ -1,0 +1,19 @@
+<header class="navbar navbar-light bg-light navbar-expand-md fixed-top">
+    <a class="navbar-brand" href="#">
+      <img src="assets/logo/WCIdea2Text-icon.png" style="max-width:150px;" alt="">
+    </a>
+</header>
+<br><br><br><br>
+<div class="container-fluid">
+  <div class="row">
+  <div class="col-xl-12">
+    <ul>
+      <li *ngFor="let entry of blogEntries">
+        <h1>{{ entry.blog_id }}</h1>
+          <h5>{{ entry.blog_date }}</h5>
+          <p>{{ entry.blog_body }}</p>
+        </li>
+      </ul>
+  </div>
+  </div>
+</div>

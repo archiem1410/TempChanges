@@ -1,0 +1,176 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    @include body-font;
+    background: rgba(206, 208, 231, 1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(206, 208, 231, 1) 0%, rgba(254, 254, 254, 1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(206, 208, 231, 1)), color-stop(100%, rgba(254, 254, 254, 1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(206, 208, 231, 1) 0%, rgba(254, 254, 254, 1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(206, 208, 231, 1) 0%, rgba(254, 254, 254, 1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(206, 208, 231, 1) 0%, rgba(254, 254, 254, 1) 100%);
+    background: radial-gradient(ellipse at center, rgba(206, 208, 231, 1) 0%, rgba(254, 254, 254, 1) 100%);
+    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ced0e7', endColorstr='#fefefe', GradientType=1 );        
+}
+
+.clear:after,
+.clear:before {
+    clear: both;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.navbar {
+    background-color: $primary;
+    color: $white;
+    border: 0;
+    border-radius: 0;
+}
+
+.m-navbar {
+    display: none;
+    background-color: $primary;
+    color: $white;
+    border: 0;
+    border-radius: 0;
+    .loginForm {
+        .btn {
+            float: right;
+            padding: 5px 25px;
+            margin: 8px;
+        }
+    }
+}
+
+.navbar-brand {
+    @include heading-font;
+    color: $white;
+    line-height: 45px;
+}
+
+.loginForm {
+    .form-control {
+        border: 0;
+        border-radius: 0;
+        height: 30px;
+        margin: 2px;
+    }
+    .btn {
+        padding: 0px 8px;
+        border-radius: 0;
+        color: $white;
+        background: $indigo-500;
+    }
+}
+
+.register {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 60px;
+    // box-shadow: 0 0 1px 1px $gray;
+    // border: 1px solid $indigo-200;
+    // border-radius: 4px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.p0 {
+    padding: 0;
+}
+
+.pr25 {
+    padding-right: 25px
+}
+
+.themeForm {
+    input,
+    textarea {
+        border-radius: 0;
+        border: 0;
+        box-shadow: none;
+        border-bottom: 1px solid $indigo-400;
+        padding: 0;
+    }
+    select {
+        height: $input-height;
+        padding: 5px 0 5px 5px;
+        background: transparent;
+        border: none;
+        /*hide default down arrow in webkit */
+        -webkit-appearance: none;
+        width: 100%;
+        border-bottom: 1px solid $indigo-400;
+    }
+    select:focus {
+        outline: none;
+    }
+    select::-ms-expand {
+        display: none;
+    }
+    select:before {
+        color: red;
+    }
+    .select-wrapper {
+        position: relative;
+    }
+    .select-wrapper {
+        .fa {
+            position: absolute;
+            right: 5px;
+            top: 10px;
+            color: $indigo-400;
+        }
+    }
+    label,
+    owl-date-time {
+        line-height: $input-height;
+    }
+    button {
+        background-color: $indigo-400;
+        border: 0;
+        border-radius: 0;
+        color: #FFF;
+    }
+    .alert-danger {
+        background: none;
+        border: 0;
+        padding: 0;
+    }
+}
+
+.alert {
+    padding: 3px 5px;
+}
+
+.privacyrow a {
+    padding: 10px;
+    &.active {
+        color: $black;
+    }
+}
+
+.navbar-form .blk {
+    display: block;
+}
+
+.fglink {
+    color: $white;
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover {
+        color: $white;
+    }
+}
+
+.dt-wrap {
+    margin: 0 -5px;
+}

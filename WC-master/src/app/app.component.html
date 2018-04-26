@@ -1,0 +1,11 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+
+<!-- <div> -->
+<!-- <app-navbar *ngIf="0"></app-navbar> -->
+<app-login *ngIf="getNavbarStatus()"></app-login>
+<router-outlet></router-outlet>
+<app-footer *ngIf="getNavbarStatus()"></app-footer>
+<!-- </div> -->
+
+<jaspero-alerts [defaultSettings]="options"></jaspero-alerts>

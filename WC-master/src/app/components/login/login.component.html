@@ -1,0 +1,30 @@
+<nav class="navbar">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <a routerLink="" class="navbar-brand">WowCouple</a>
+    </div>
+    <!-- Collection of nav links and other content for toggling -->
+    <div class="collapse navbar-collapse">
+        <form class="navbar-form navbar-right loginForm" name="loginForm" #loginForm="ngForm" (ngSubmit)="loginForm.valid && onSubmit(loginForm)" autocomplete="off">
+            <div class="form-group">
+                <input type="text" class="form-control blk" placeholder="Username" id="uname" name="uname" [(ngModel)]="login.username" #uname="ngModel" required />
+                <span><br></span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control blk" placeholder="Password" id="password" name="password" [(ngModel)]="login.password" #password="ngModel" required>
+                <a class="fglink" routerLink="password/reset">Forgot password?</a>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default nav-customBtn blk">Login</button>
+                <span><br></span>
+            </div>
+        </form>
+    </div>
+</nav>
+
+<nav class="m-navbar">
+    <div class="navbar-header loginForm">
+        <a routerLink="" class="navbar-brand">WowCouple</a>
+        <button routerLink="login" class="btn btn-default nav-customBtn blk" *ngIf="!isLoginPage()">Login</button>
+    </div>
+</nav>

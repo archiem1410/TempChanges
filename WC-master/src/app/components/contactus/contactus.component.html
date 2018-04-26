@@ -1,0 +1,50 @@
+<div class="register">
+    <h3 class="mt10">Contact Us</h3>
+    <div [hidden]="!errorMsg" class="alert alert-danger text-center">
+        {{errorMsg}}
+    </div>
+    <div [hidden]="!successMsg" class="alert alert-success text-center">
+        {{successMsg}}
+    </div>
+    <form class="themeForm" #contactForm="ngForm" (ngSubmit)="contactForm.valid && onSubmit(contactForm)" autocomplete="off">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="fname" placeholder="First name" name="fname" [(ngModel)]="contact.FirstName" #fname="ngModel" required pattern={{vl.pattern.name}}>
+                    <div *ngIf="contactForm.submitted && (fname.empty || fname.invalid)" class="alert alert-danger">
+                        {{vl.msg.invalidname}}
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="lname" placeholder="Last name" name="lname" [(ngModel)]="contact.LastName" #lname="ngModel" required pattern={{vl.pattern.name}}>
+                    <div *ngIf="contactForm.submitted && (lname.empty || lname.invalid)" class="alert alert-danger">
+                        {{vl.msg.invalidname}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="email" placeholder="Email Id" name="email" [(ngModel)]="contact.Email" #email="ngModel" required pattern={{vl.pattern.email}}>
+            <div *ngIf="contactForm.submitted && (email.empty || email.invalid)" class="alert alert-danger">
+                {{vl.msg.invalidemail}}
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="subject" placeholder="Subject" name="subject" [(ngModel)]="contact.Subject" #subject="ngModel" required pattern={{vl.pattern.details}}>
+            <div *ngIf="contactForm.submitted && (subject.empty || subject.invalid)" class="alert alert-danger">
+                {{vl.msg.invalidsubject}}
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea type="text" rows="4" maxlength="200" class="form-control" id="query" placeholder="Query" name="query" [(ngModel)]="contact.Body" #query="ngModel" required pattern={{vl.pattern.details}}></textarea>
+            <div *ngIf="contactForm.submitted && (query.empty || query.invalid)" class="alert alert-danger">
+                {{vl.msg.invalidquery}}
+            </div>
+        </div>
+        <div class="form-group">
+            <br>
+            <button type="submit" class="btn btn-default">Submit</button>
+            <app-loader *ngIf="loading"></app-loader>
+        </div>
+    </form>
+</div>

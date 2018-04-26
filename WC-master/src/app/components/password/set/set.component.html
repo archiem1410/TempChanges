@@ -1,0 +1,30 @@
+<div class="register">
+    <h3 class="mt10">Set Password</h3>
+    <div [hidden]="!errorMsg" class="alert alert-danger text-center">
+        {{errorMsg}}
+    </div>
+    <div [hidden]="!successMsg" class="alert alert-success text-center">
+        {{successMsg}}
+    </div>
+    <form class="mtrForm" [ngClass]="{'form-submit': resetForm.submitted}" name="resetForm" #resetForm="ngForm" (ngSubmit)="resetForm.valid && onSubmit(resetForm)" autocomplete="off">
+        <div class="group" [ngClass]="{'error': !isValidPattern() }">
+            <input type="text" id="Password" name="Password" [(ngModel)]="register.Password" #Password="ngModel" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>New Password</label>
+            <span class="msg">{{vl.msg.passworderror}}</span>
+        </div>
+        <div class="group" [ngClass]="{'error': Password.valid && !isPasswordMatch()}">
+            <input type="text" id="ConfirmPassword" name="ConfirmPassword" [(ngModel)]="register.ConfirmPassword" #ConfirmPassword="ngModel" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Confirm Password</label>
+            <span class="msg">{{vl.msg.passwordmatcherror}}</span>
+        </div>
+        <div class="btn-wrap">
+            <button type="submit" class="btn btn-default">Submit</button>
+            <app-loader *ngIf="loading"></app-loader>
+            <a class="pull-right" routerLink="/" routerLinkActive="active">Register</a>
+        </div>
+    </form>
+</div>

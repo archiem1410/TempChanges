@@ -1,0 +1,197 @@
+<div class="register" *ngIf="isAKValid">
+  <h3 class="mt10">Complete Registration</h3>
+  <div [hidden]="!errorMsg" class="alert alert-danger text-center">
+      {{errorMsg}}
+  </div>
+  <div [hidden]="!successMsg" class="alert alert-success text-center">
+      {{successMsg}}
+  </div>
+  <form class="mtrForm" [ngClass]="{'form-submit': registerForm.submitted}" name="registerForm" #registerForm="ngForm" (ngSubmit)="registerForm.valid && onSubmit(registerForm)" autocomplete="off">
+        <div class="group">
+          <div class="custominput">{{register.first_name}}</div>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <div class="customlabelname">First Name</div>
+        </div>
+      <!--<div class="group" [ngClass]="{'error': fname.invalid}">
+          <input type="text" id="fname" name="fname" [(ngModel)]="register.first_name" #fname="ngModel" pattern={{vl.pattern.name}} required>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>First name</label>
+          <span class="msg">{{vl.msg.invalidname}}</span>
+      </div>-->
+      <div class="group">
+          <div class="custominput">{{register.last_name}}</div>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <div class="customlabelname">Last Name</div>
+        </div>
+      <!--<div class="group" [ngClass]="{'error': lname.invalid}">
+          <input type="text" id="lname" name="lname" [(ngModel)]="register.last_name" #lname="ngModel" pattern={{vl.pattern.name}} required>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Last name</label>
+          <span class="msg">{{vl.msg.invalidname}}</span>
+      </div>-->
+      <div class="group">
+          <div class="custominput">{{register.email_id}}</div>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <div class="customlabelname">Email Address</div>
+        </div>
+      <!--<div class="group" [ngClass]="{'error': email.invalid}">
+          <input type="text" id="email" name="email" [(ngModel)]="register.email_id" #email="ngModel" pattern={{vl.pattern.email}} required>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Email Address</label>
+          <span class="msg">{{vl.msg.invalidname}}</span>
+      </div>-->
+      <div class="group" [ngClass]="{'error': !isValidPattern() }">
+          <input type="text"
+          id="Password"
+          name="Password"
+          [(ngModel)]="register.password"
+          #Password="ngModel"
+          pattern={{vl.pattern.password}}
+          required>
+          <!--<span class="highlight"></span>
+          <span class="bar"></span>-->
+          <label>Password</label>
+          <div *ngIf="Password?.touched" class="alert alert-danger">
+              <div *ngIf="Password.errors?.required || Password.errors?.pattern">{{vl.msg.passworderror}}</div>
+            </div>
+          <!--<span class="msg">{{vl.msg.passworderror}}</span>-->
+      </div>
+      <div class="group" [ngClass]="{'error': Password.valid && !isPasswordMatch()}">
+          <input type="text"
+          id="ConfirmPassword"
+          name="ConfirmPassword"
+          [(ngModel)]="register.ConfirmPassword"
+          #ConfirmPassword="ngModel"
+          required>
+          <!--<span class="highlight"></span>
+          <span class="bar"></span>-->
+          <label>Confirm Password</label>
+          <div ng-blur="isPasswordMatch()" *ngIf="ConfirmPassword?.touched" class="alert alert-danger">
+              <div *ngIf="ConfirmPassword.errors?.required || !pswdMatch">{{vl.msg.passwordmatcherror}}</div>
+            </div>
+          <!--<span class="msg">{{vl.msg.passwordmatcherror}}</span>-->
+      </div>
+      <div class="group def" [ngClass]="{'error': !register.sex}">
+          <span class="pure-radiobutton pr25">
+              <input class="radio" type="radio" #sex="ngModel" [(ngModel)]="register.sex" name="sex" id="radio1" value="Male" required>
+              <label for="radio1">Male</label>
+          </span>
+          <span class="pure-radiobutton">
+              <input class="radio" type="radio" #sex="ngModel" [(ngModel)]="register.sex" name="sex" id="radio2" value="Female" required>
+              <label for="radio2">Female</label>
+          </span>
+          <div *ngIf="!sexCheck">{{vl.msg.invalidgender}}</div>
+          <!--<div [hidden]="!sex?.hasError('required')">{{vl.msg.invalidgender}}</div>-->
+          <!--<div *ngIf="sex.errors?.required" class="alert alert-danger">{{vl.msg.invalidgender}}</div>-->
+          <!--<span class="msg">{{vl.msg.invalidgender}}</span>-->
+      </div>
+      <div class="group">
+          <div class="row dt-wrap">
+              <div class="col-xs-3">
+                  <label for="gender">Birthday</label>
+              </div>
+              <div class="col-xs-9">
+                  <owl-date-time [(ngModel)]="register.dob" name="dob" #dob [locale]="en" dataType="string" [autoClose]="true" dateFormat="DD-MMMM-YYYY" type="calendar" placeHolder="dd-mmm-yyyy" [max]="maxpicker" hideClearButton="true"></owl-date-time>
+              </div>
+          </div>
+      </div>
+      <div class="group def" [ngClass]="{'error': !register.orientation}">
+          <span class="pure-radiobutton pr25">
+              <input class="radio" type="radio" [(ngModel)]="register.orientation" name="orientation" id="radio3" value="Straight" required>
+              <label for="radio3">Straight</label>
+          </span>
+          <span class="pure-radiobutton pr25">
+              <input class="radio" type="radio" [(ngModel)]="register.orientation" name="orientation" id="radio4" value="Home" required>
+              <label for="radio4">Homo</label>
+          </span>
+          <span class="pure-radiobutton">
+              <input class="radio" type="radio" [(ngModel)]="register.orientation" name="orientation" id="radio5" value="Bio" required>
+              <label for="radio5">Bi</label>
+          </span>
+          <span class="msg">{{vl.msg.invalidorientation}}</span>
+      </div>
+      <div class="btn-wrap">
+          <button type="submit" (blur)="buttonCheck()" [disabled]="!registerForm.valid" class="btn btn-default">Register</button>
+          <app-loader *ngIf="loading"></app-loader>
+      </div>
+  </form>
+
+  <div *ngIf="!isAKValid">
+      {{msg}}
+  </div>
+
+  <!-- <form class="" name="registerForm" #registerForm="ngForm" (ngSubmit)="registerForm.valid && onSubmit(registerForm)" autocomplete="off"> -->
+  <!-- <div class="form-group">
+              <div class="row">
+                  <div class="col-xs-6">
+                      <input type="text" class="form-control" id="fname" name="fname" #fname placeholder="First name">
+                  </div>
+                  <div class="col-xs-6">
+                      <input type="text" class="form-control" id="lname" name="lname" #lname placeholder="Last name">
+                  </div>
+              </div>
+          </div> -->
+  <!-- <div class="form-group"> -->
+  <!-- <input type="text" class="form-control" id="email" name="email" #email placeholder="Email Id"> -->
+  <!-- </div> -->
+  <!-- <div class="row">
+              <div class="col-xs-3">
+                  <label for="gender">Gender</label>
+              </div>
+              <div class="col-xs-9">
+                  <div class="form-group select-wrapper">
+                      <i class="fa fa-caret-down" aria-hidden="true"></i>
+                      <select name="gender" id="gender" #gender>
+                        <option value="m">Male</option>
+                        <option value="m">Female</option>
+                      </select>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-3">
+                  <label for="gender">Orientation</label>
+              </div>
+              <div class="col-xs-9">
+                  <div class="form-group select-wrapper">
+                      <i class="fa fa-caret-down" aria-hidden="true"></i>
+                      <select name="orientation" id="orientation" #orientation value="">
+                        <option value="m">Straight</option>
+                        <option value="m">Home</option>
+                        <option value="m">Bio</option>
+                      </select>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-xs-3">
+                  <label for="gender">Birthday</label>
+              </div>
+              <div class="col-xs-9">
+                  <owl-date-time [(ngModel)]="moment" name="dob" #dob [locale]="en" dataType="string" [autoClose]="true" dateFormat="DD-MMM-YYYY" type="calendar" placeHolder="DD-MMM-YYYY" [max]="today" hideClearButton="true"></owl-date-time>
+              </div>
+          </div> -->
+  <!-- <div class="form-group">
+              <br>
+              <button type="submit" class="btn btn-default">Submit</button>
+          </div>
+      </form> -->
+</div>
+
+
+<!-- <li>
+  <div class="pure-radiobutton">
+      <input id="radio1" name="radio" type="radio" class="radio" checked="checked">
+      <label for="radio1">Option 1</label>
+  </div>
+  <div class="pure-radiobutton">
+      <input id="radio2" name="radio" type="radio" class="radio">
+      <label for="radio2">Option 1</label>
+  </div>
+</li> -->

@@ -1,0 +1,127 @@
+<div class="register">
+    <h3 class="mt10">Registration</h3>
+    <div [hidden]="!errorMsg" class="alert alert-danger text-center">
+        {{errorMsg}}
+    </div>
+    <div [hidden]="!successMsg" class="alert alert-success text-center">
+        {{successMsg}}
+    </div>
+    <form class="mtrForm"
+      [ngClass]="{'form-submit': registerForm.submitted}"
+      name="registerForm"
+      #registerForm="ngForm"
+      (ngSubmit)="registerForm.valid && onSubmit(registerForm)"
+      autocomplete="off">
+        <div class="group" [ngClass]="{'error': fname.invalid}">
+            <input type="text"
+            id="fname"
+            name="fname"
+            [(ngModel)]="register.first_name"
+            #fname="ngModel"
+            pattern={{vl.pattern.name}}
+            required>
+            <!--<span class="highlight"></span>
+            <span class="bar"></span>-->
+            <label>First name</label>
+            <!--<span class="msg"> -->
+            <div *ngIf="fname?.touched" class="alert alert-danger">
+              <div *ngIf="fname.errors?.required || fname.errors?.pattern">{{vl.msg.invalidname}}</div>
+            </div>
+          <!--</span>-->
+        </div>
+        <div class="group" [ngClass]="{'error': lname.invalid}">
+            <input type="text"
+            id="lname"
+            name="lname"
+            [(ngModel)]="register.last_name"
+            #lname="ngModel"
+            pattern={{vl.pattern.name}}
+            required>
+            <!--<span class="highlight"></span>
+            <span class="bar"></span>-->
+            <label>Last name</label>
+            <!--<span class="msg">-->
+                <div *ngIf="lname?.touched" class="alert alert-danger">
+                    <div *ngIf="lname.errors?.required || lname.errors?.pattern">{{vl.msg.invalidname}}</div>
+                  </div>
+             <!--</span>-->
+        </div>
+        <div class="group" [ngClass]="{'error': email.invalid}">
+            <input type="text"
+            id="email"
+            name="email"
+            [(ngModel)]="register.email_id"
+            #email="ngModel"
+            pattern={{vl.pattern.email}}
+            required>
+            <!--<span class="highlight"></span>
+            <span class="bar"></span>-->
+            <label>Email Address</label>
+            <!--<span class="msg">{{vl.msg.invalidname}}</span>-->
+            <div *ngIf="email?.touched" class="alert alert-danger">
+                <div *ngIf="email.errors?.required || email.errors?.pattern">{{vl.msg.invalidemail}}</div>
+              </div>
+        </div>
+        <div class="btn-wrap">
+            <button type="submit" [disabled]="!registerForm.valid" class="btn btn-default">Register</button>
+            <app-loader *ngIf="loading"></app-loader>
+        </div>
+    </form>
+
+    <!-- <form class="" name="registerForm" #registerForm="ngForm" (ngSubmit)="registerForm.valid && onSubmit(registerForm)" autocomplete="off"> -->
+    <!-- <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" id="fname" name="fname" #fname placeholder="First name">
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" id="lname" name="lname" #lname placeholder="Last name">
+                    </div>
+                </div>
+            </div> -->
+    <!-- <div class="form-group"> -->
+    <!-- <input type="text" class="form-control" id="email" name="email" #email placeholder="Email Id"> -->
+    <!-- </div> -->
+    <!-- <div class="row">
+                <div class="col-xs-3">
+                    <label for="gender">Gender</label>
+                </div>
+                <div class="col-xs-9">
+                    <div class="form-group select-wrapper">
+                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        <select name="gender" id="gender" #gender>
+                          <option value="m">Male</option>
+                          <option value="m">Female</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <label for="gender">Orientation</label>
+                </div>
+                <div class="col-xs-9">
+                    <div class="form-group select-wrapper">
+                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        <select name="orientation" id="orientation" #orientation value="">
+                          <option value="m">Straight</option>
+                          <option value="m">Home</option>
+                          <option value="m">Bio</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <label for="gender">Birthday</label>
+                </div>
+                <div class="col-xs-9">
+                    <owl-date-time [(ngModel)]="moment" name="dob" #dob [locale]="en" dataType="string" [autoClose]="true" dateFormat="DD-MMM-YYYY" type="calendar" placeHolder="DD-MMM-YYYY" [max]="today" hideClearButton="true"></owl-date-time>
+                </div>
+            </div> -->
+    <!-- <div class="form-group">
+                <br>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </form> -->
+</div>

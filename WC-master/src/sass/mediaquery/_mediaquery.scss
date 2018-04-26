@@ -1,0 +1,50 @@
+@media (max-width:480px) {
+    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+}
+
+@media (max-width:640px) {
+    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+    body {
+        background: none;
+    }
+    .register {
+        width: 100%;
+        margin-top: 0;
+        padding: 7% 20px;
+        h3 {
+            font-size: 18px;
+            text-align: center;
+        }
+    }
+    .mtrForm {
+        input {
+            font-size: 12px;
+        }
+        label {
+            font-size: 12px;
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .navbar {
+        display: none;
+    }
+    .m-navbar {
+        display: block;
+    }
+}
+
+@media (max-width:960px) {
+    /* tablet, landscape iPad, lo-res laptops ands desktops */
+    // .navbar-collapse {
+    //     display: block;
+    // }
+    .navbar-brand {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width:1024px) {
+    /* big landscape tablets, laptops, and desktops */
+}

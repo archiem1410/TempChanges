@@ -1,0 +1,28 @@
+@mixin cfont-face($font, $family) {
+    font-family: $font;
+    src: url('#{$font-path}#{$family}');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin body-font() {
+    font-family: $font3;
+}
+
+@mixin heading-font() {
+    font-family: $font1;
+}
+
+@mixin button($border,
+$color,
+$bg,
+$radius) {
+    background: none;
+    border: 2px solid $border;
+    box-shadow: none;
+    color: $color;
+    padding: 5px 15px;
+    border-radius: $radius;
+    font-family: $font1;
+    background-color: $bg;
+}
